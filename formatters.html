@@ -6,6 +6,7 @@
 <meta charset="UTF-8">
 <title>かれは開発室 - Kareha Hub</title>
 <link rel="stylesheet" href="simple.css">
+<link rel="icon" href="flamingo-favicon.png" type="image/png">
 </head>
 <body>
 <header><a href="/">かれは開発室 - Kareha Hub</a></header>
@@ -24,42 +25,42 @@
 <p>そこでまあ、私が個人的に使っている、各プログラミング言語のフォーマッタを載せておこうと思う。</p>
 <ul>
 <li>Lua: <a href=
-"https://github.com/JohnnyMorganz/StyLua">StyLua</a></li>
-<li>Python: <a href="https://black.readthedocs.io/">Black</a></li>
-<li>HTML: <a href="https://www.html-tidy.org/">Tidy</a></li>
+"https://github.com/JohnnyMorganz/StyLua">StyLua</a>🔗</li>
+<li>Python: <a href="https://black.readthedocs.io/">Black</a>🔗</li>
+<li>HTML: <a href="https://www.html-tidy.org/">Tidy</a>🔗</li>
 <li>JavaScript: <a href=
-"https://github.com/beautifier/js-beautify">js-beautify</a></li>
+"https://github.com/beautifier/js-beautify">js-beautify</a>🔗</li>
 <li>CSS: <a href=
-"https://csstidy.sourceforge.net/">CSSTidy</a></li>
-<li>sh: <a href="https://github.com/mvdan/sh">shfmt</a></li>
+"https://csstidy.sourceforge.net/">CSSTidy</a>🔗</li>
+<li>sh: <a href="https://github.com/mvdan/sh">shfmt</a>🔗</li>
 </ul>
 <p>優先するのは、Debianパッケージにあること。 また、Node.jsやDenoに依存しないこと。
 なるべく好みの言語で作られていること。</p>
 <p>以下でそれぞれについてもう少し詳しく述べる。 <a href=
 "micro.html">micro</a>のプラグイン<a href=
-"https://github.com/akikareha/micro-fmtonsave-plugin/">fmtonsave</a>での設定方法も載せる。</p>
+"https://github.com/akikareha/micro-fmtonsave-plugin/">fmtonsave</a>🔗での設定方法も載せる。</p>
 <h2>Lua</h2>
 <p>Luaのフォーマッタは<a href=
-"https://github.com/JohnnyMorganz/StyLua">StyLua</a>がお気に入り。
+"https://github.com/JohnnyMorganz/StyLua">StyLua</a>🔗がお気に入り。
 Rustで作られている。 Debianパッケージには無いが、Rustがあれば <code>cargo install
 stylua</code> でインストールできる。</p>
 <p><code>fmtonsave</code> で設定する場合は <code>setfmtonsave stylua</code>
 とする。</p>
 <h2>Python</h2>
 <p>Pythonのフォーマッタは<a href=
-"https://black.readthedocs.io/">Black</a>がお気に入り。 Pythonで作られている。
+"https://black.readthedocs.io/">Black</a>🔗がお気に入り。 Pythonで作られている。
 Debianパッケージにあり、 <code>apt-get install black</code> でインストールできる。</p>
 <p><code>fmtonsave</code> で設定する場合は <code>setfmtonsave black</code>
 とする。</p>
 <h2>HTML</h2>
-<p>HTMLのフォーマッタは<a href="https://www.html-tidy.org/">Tidy</a>がお気に入り。
-Cで作られている。 Debianパッケージにあり、 <code>apt-get install tidy</code>
-でインストールできる。</p>
+<p>HTMLのフォーマッタは<a href=
+"https://www.html-tidy.org/">Tidy</a>🔗がお気に入り。 Cで作られている。
+Debianパッケージにあり、 <code>apt-get install tidy</code> でインストールできる。</p>
 <p><code>fmtonsave</code> で設定する場合は <code>setfmtonsave tidy
 -m</code> とする。 オプションの <code>-m</code> は上書き保存。</p>
 <h2>JavaScript</h2>
 <p>JavaScriptのフォーマッタは<a href=
-"https://github.com/beautifier/js-beautify">js-beautify</a>がお気に入り。
+"https://github.com/beautifier/js-beautify">js-beautify</a>🔗がお気に入り。
 Pythonで作られていると思っているが、JavaScriptも使われているのだろうか。 要調査。 Debianパッケージにあり、
 <code>apt-get install jsbeautifier</code> でインストールできる。</p>
 <p><code>fmtonsave</code> で設定する場合は <code>setfmtonsave
@@ -67,7 +68,7 @@ js-beautify-py -r -n -t</code> とする。 オプションの <code>-r</code> �
 <code>-n</code> はファイルの最後に改行を付ける、 <code>-t</code> はインデントをタブにする。</p>
 <h2>CSS</h2>
 <p>CSSのフォーマッタは<a href=
-"https://csstidy.sourceforge.net/">CSSTidy</a>がお気に入り。 C++で作られている。
+"https://csstidy.sourceforge.net/">CSSTidy</a>🔗がお気に入り。 C++で作られている。
 Debianパッケージにあり、 <code>apt-get install csstidy</code>
 でインストールできる。</p>
 <p><code>fmtonsave</code> で設定する場合は <code>setfmtonsave
@@ -79,12 +80,14 @@ csstidy $1 /tmp/$1 &amp;& echo &gt;&gt; /tmp/$1 &amp;& mv /tmp/$1 $1
 <p><code>csstidy</code> には上書き保存のオプションが無いので、このようなものを自作する必要があった。 さらに、
 <code>csstidy</code> はファイルの最後に改行を付けてくれないので、スクリプトの中で付けた。</p>
 <h2>sh</h2>
-<p>shのフォーマッタは<a href="https://github.com/mvdan/sh">shfmt</a>がお気に入り。
-Goで作られている。 Debianパッケージにあり、 <code>apt-get install shfmt</code>
-でインストールできる。</p>
+<p>shのフォーマッタは<a href=
+"https://github.com/mvdan/sh">shfmt</a>🔗がお気に入り。 Goで作られている。
+Debianパッケージにあり、 <code>apt-get install shfmt</code> でインストールできる。</p>
 <p><code>fmtonsave</code> で設定する場合は <code>setfmtonsave shfmt
 -w</code> とする。 オプションの <code>-w</code> は上書き保存。</p>
-<footer>Web style by <a href="https://simplecss.org/">Simple.css
-Framework</a></footer>
+<footer>Contact: <a href=
+"mailto:aki@kareha.org">aki@kareha.org</a><br>
+Styled with <a href=
+"https://simplecss.org/">Simple.css</a>🔗</footer>
 </body>
 </html>

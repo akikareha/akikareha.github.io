@@ -1,11 +1,11 @@
-# 下書き
+# 下書きたち
 
 Drafts
 
 ここは下書きを集めるページ。
-トップページからリンクしない。
-舞台裏のようなところ。
-もっとも、Gitリポジトリからは丸見えだが。
+丸見えだけど、舞台裏のようなところ。  
+This is a page for collecting drafts.
+It's fully visible, yet something like a backstage.
 
 * [QWERTYで良いよもう](typing.html)  
   I'm Fine with QWERTY Now
@@ -27,7 +27,3 @@ Drafts
   It’s Time to Move Beyond Copyright
 * [OpenBSDとDevuanにこだわり続けて良いのかな](environment.html)  
   Is It Okay to Keep Sticking with OpenBSD and Devuan?
-
-ツール
-
-* [トップページ](index.html)

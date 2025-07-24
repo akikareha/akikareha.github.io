@@ -8,7 +8,7 @@ How I Made My GitHub Page
 Gitは、ソースコードだけでなく、**ファイルなら何でも共有できる**。
 **ウェブサイトのファイルも共有できる**わけだ。
 
-GitHubでは、Gitを使ってウェブサイトを作る仕組みを提供していて、これが[GitHub Pages](https://pages.github.com/)と呼ばれる。
+GitHubでは、Gitを使ってウェブサイトを作る仕組みを提供していて、これが[GitHub Pages](https://pages.github.com/)🔗と呼ばれる。
 基本的な使い方は次の通り。
 
 1. GitHubアカウントを作成する。
@@ -24,7 +24,7 @@ GitHubでは、Gitを使ってウェブサイトを作る仕組みを提供し�
 ウェブサイトの内容は、好きなツールを使って静的なHTMLファイルを作れば良い。
 私は[Markdown](markdown.html)で書いて、コマンドでHTMLに変換することにした。
 コマンドは `markdown` で、Debianパッケージにあり、 `apt-get install markdown` でインストールできる。これはPerlで作られている。
-[初期のものに忠実な実装](https://daringfireball.net/projects/markdown/)らしい。
+[初期のものに忠実な実装](https://daringfireball.net/projects/markdown/)🔗らしい。
 
 ところが、この `markdown` コマンドは、一度にHTMLに変換できるMarkdownファイルはひとつだけ。
 なので、いくつか補助ツールを作る必要があった。
@@ -81,5 +81,5 @@ GitHubでは、Gitを使ってウェブサイトを作る仕組みを提供し�
 
 ## スタイルを整える
 
-最後になったが、スタイルは[Simple.css Framework](https://simplecss.org/)のCSSを使うことにした。
+最後になったが、スタイルは[Simple.css Framework](https://simplecss.org/)🔗のCSSを使うことにした。
 良い感じ。
