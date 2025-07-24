@@ -1,5 +1,7 @@
 # microは21世紀の優しいテキストエディタ
 
+Micro: A Gentle Text Editor for the 21st Century
+
 Linuxのターミナルのテキストエディタと言えば[Vim](https://www.vim.org/)か[Emacs](https://www.gnu.org/software/emacs/)が定番だけど、これらは慣れてないとまったく使えない。
 慣れてなくても使える[nano](https://nano-editor.org/)もあるけど、これは機能がとぼしい。
 
