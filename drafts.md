@@ -1,7 +1,12 @@
-# drafts
+# 下書き
 
-* [鬱の底から這い上がりたい](depression.html)  
-  I Want to Climb Out of the Depths of Depression
+Drafts
+
+ここは下書きを集めるページ。
+トップページからリンクしない。
+舞台裏のようなところ。
+もっとも、Gitリポジトリからは丸見えだが。
+
 * [QWERTYで良いよもう](typing.html)  
   I'm Fine with QWERTY Now
 * [Leafpadで済めば平和なんだけど](leafpad.html)  
@@ -14,5 +19,15 @@
   Notes on Some Risky Git Practices
 * [敗けました: もうMarkdownで良いことにした](markdown.html)  
   I Give Up: I've Settled on Markdown
+* [ハイフンで分けるかつなげるか迷う](hyphen.html)  
+  Torn Between Using a Hyphen or Writing as One Word
+* [正しいものではなく流行ったものが勝つ悲しみ](lament.html)  
+  The Grief of Seeing Truth Defeated by Trend
+* [もうやめようよ著作権](copyright.html)  
+  It’s Time to Move Beyond Copyright
 * [OpenBSDとDevuanにこだわり続けて良いのかな](environment.html)  
   Is It Okay to Keep Sticking with OpenBSD and Devuan?
+
+ツール
+
+* [トップページ](index.html)
