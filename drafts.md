@@ -1,11 +1,11 @@
-# 下書きたち
-
-Drafts
+# 下書きたち - Drafts
 
 ここは下書きを集めるページ。
 丸見えだけど、舞台裏のようなところ。  
 This is a page for collecting drafts.
 It's fully visible, yet something like a backstage.
+
+## 文書
 
 * [QWERTYで良いよもう](typing.html)  
   I'm Fine with QWERTY Now
@@ -27,3 +27,9 @@ It's fully visible, yet something like a backstage.
   It’s Time to Move Beyond Copyright
 * [OpenBSDとDevuanにこだわり続けて良いのかな](environment.html)  
   Is It Okay to Keep Sticking with OpenBSD and Devuan?
+
+## メモ
+
+* [gimp](gimp.html)
+* [languages](languages.html)
+* [softwares](softwares.html)

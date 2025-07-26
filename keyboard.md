@@ -1,5 +1,4 @@
 # キーボードはデジタイザ
-
 The Keyboard Is a Digitizer
 
 私はコンピュータのキーボードが好きだ。

@@ -1,5 +1,4 @@
 # 鬱の底から這い上がりたい
-
 I Want to Climb Out of the Depths of Depression
 
 鬱になった。

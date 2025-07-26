@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>かれは開発室 - Kareha Hub</title>
+<title>{{title}}</title>
 <link rel="stylesheet" href="simple.css" />
 <link rel="icon" href="flamingo-favicon.png" type="image/png" />
 </head>

@@ -1,5 +1,4 @@
 # お気に入りのフォーマッタたち
-
 My Favorite Formatters
 
 テキストで書くプログラミング言語では、どれもソースコードにはある程度の任意性があって、プログラムとしては同じ意味でも、テキストとしては異なるものを書けてしまう。
@@ -14,23 +13,24 @@ My Favorite Formatters
 
 そこでまあ、私が個人的に使っている、各プログラミング言語のフォーマッタを載せておこうと思う。
 
-* Lua: [StyLua](https://github.com/JohnnyMorganz/StyLua)🔗
-* Python: [Black](https://black.readthedocs.io/)🔗
-* HTML: [Tidy](https://www.html-tidy.org/)🔗
-* JavaScript: [js-beautify](https://github.com/beautifier/js-beautify)🔗
-* CSS: [CSSTidy](https://csstidy.sourceforge.net/)🔗
-* sh: [shfmt](https://github.com/mvdan/sh)🔗
+* Lua: [StyLua](https://github.com/JohnnyMorganz/StyLua)
+* Python: [Black](https://black.readthedocs.io/)
+* HTML: [Tidy](https://www.html-tidy.org/)
+* JavaScript: [js-beautify](https://github.com/beautifier/js-beautify)
+* CSS: [CSSTidy](https://csstidy.sourceforge.net/)
+* sh: [shfmt](https://github.com/mvdan/sh)
+* Perl: [Perltidy](https://perltidy.sourceforge.net/)
 
 優先するのは、Debianパッケージにあること。
 また、Node.jsやDenoに依存しないこと。
 なるべく好みの言語で作られていること。
 
 以下でそれぞれについてもう少し詳しく述べる。
-[micro](micro.html)のプラグイン[fmtonsave](https://github.com/akikareha/micro-fmtonsave-plugin/)🔗での設定方法も載せる。
+[micro](micro.html)のプラグイン[fmtonsave](https://github.com/akikareha/micro-fmtonsave-plugin/)での設定方法も載せる。
 
 ## Lua
 
-Luaのフォーマッタは[StyLua](https://github.com/JohnnyMorganz/StyLua)🔗がお気に入り。
+Luaのフォーマッタは[StyLua](https://github.com/JohnnyMorganz/StyLua)がお気に入り。
 Rustで作られている。
 Debianパッケージには無いが、Rustがあれば `cargo install stylua` でインストールできる。
 
@@ -38,7 +38,7 @@ Debianパッケージには無いが、Rustがあれば `cargo install stylua` �
 
 ## Python
 
-Pythonのフォーマッタは[Black](https://black.readthedocs.io/)🔗がお気に入り。
+Pythonのフォーマッタは[Black](https://black.readthedocs.io/)がお気に入り。
 Pythonで作られている。
 Debianパッケージにあり、 `apt-get install black` でインストールできる。
 
@@ -46,7 +46,7 @@ Debianパッケージにあり、 `apt-get install black` でインストール�
 
 ## HTML
 
-HTMLのフォーマッタは[Tidy](https://www.html-tidy.org/)🔗がお気に入り。
+HTMLのフォーマッタは[Tidy](https://www.html-tidy.org/)がお気に入り。
 Cで作られている。
 Debianパッケージにあり、 `apt-get install tidy` でインストールできる。
 
@@ -55,7 +55,7 @@ Debianパッケージにあり、 `apt-get install tidy` でインストール�
 
 ## JavaScript
 
-JavaScriptのフォーマッタは[js-beautify](https://github.com/beautifier/js-beautify)🔗がお気に入り。
+JavaScriptのフォーマッタは[js-beautify](https://github.com/beautifier/js-beautify)がお気に入り。
 Pythonで作られていると思っているが、JavaScriptも使われているのだろうか。
 要調査。
 Debianパッケージにあり、 `apt-get install jsbeautifier` でインストールできる。
@@ -65,7 +65,7 @@ Debianパッケージにあり、 `apt-get install jsbeautifier` でインスト
 
 ## CSS
 
-CSSのフォーマッタは[CSSTidy](https://csstidy.sourceforge.net/)🔗がお気に入り。
+CSSのフォーマッタは[CSSTidy](https://csstidy.sourceforge.net/)がお気に入り。
 C++で作られている。
 Debianパッケージにあり、 `apt-get install csstidy` でインストールできる。
 
@@ -80,9 +80,24 @@ Debianパッケージにあり、 `apt-get install csstidy` でインストー�
 
 ## sh
 
-shのフォーマッタは[shfmt](https://github.com/mvdan/sh)🔗がお気に入り。
+shのフォーマッタは[shfmt](https://github.com/mvdan/sh)がお気に入り。
 Goで作られている。
 Debianパッケージにあり、 `apt-get install shfmt` でインストールできる。
 
 `fmtonsave` で設定する場合は `setfmtonsave shfmt -w` とする。
 オプションの `-w` は上書き保存。
+
+## Perl
+
+Perlのフォーマッタは[Perltidy](https://perltidy.sourceforge.net/)がお気に入り。
+Perlで作られている。
+Debianパッケージにあり、 `apt-get install perltidy` でインストールできる。
+
+`fmtonsave` で設定する場合は `setfmtonsave perltidy-in-place` とする。
+`perltidy-in-place` は自作のシェルスクリプトで、次のようなもの。
+
+	#!/bin/sh
+	perltidy -b $1
+	rm "$1.bak"
+
+オプションの `-b` は上書き保存だが、バックアップファイルを作ってしまうので、スクリプトの中で削除した。

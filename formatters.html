@@ -4,7 +4,8 @@
 <meta name="generator" content=
 "HTML Tidy for HTML5 for Linux version 5.6.0">
 <meta charset="UTF-8">
-<title>かれは開発室 - Kareha Hub</title>
+<title>お気に入りのフォーマッタたち - My Favorite Formatters | かれは開発室 - Kareha
+Hub</title>
 <link rel="stylesheet" href="simple.css">
 <link rel="icon" href="flamingo-favicon.png" type="image/png">
 </head>
@@ -33,6 +34,8 @@
 <li>CSS: <a href=
 "https://csstidy.sourceforge.net/">CSSTidy</a>🔗</li>
 <li>sh: <a href="https://github.com/mvdan/sh">shfmt</a>🔗</li>
+<li>Perl: <a href=
+"https://perltidy.sourceforge.net/">Perltidy</a>🔗</li>
 </ul>
 <p>優先するのは、Debianパッケージにあること。 また、Node.jsやDenoに依存しないこと。
 なるべく好みの言語で作られていること。</p>
@@ -85,6 +88,20 @@ csstidy $1 /tmp/$1 &amp;& echo &gt;&gt; /tmp/$1 &amp;& mv /tmp/$1 $1
 Debianパッケージにあり、 <code>apt-get install shfmt</code> でインストールできる。</p>
 <p><code>fmtonsave</code> で設定する場合は <code>setfmtonsave shfmt
 -w</code> とする。 オプションの <code>-w</code> は上書き保存。</p>
+<h2>Perl</h2>
+<p>Perlのフォーマッタは<a href=
+"https://perltidy.sourceforge.net/">Perltidy</a>🔗がお気に入り。
+Perlで作られている。 Debianパッケージにあり、 <code>apt-get install perltidy</code>
+でインストールできる。</p>
+<p><code>fmtonsave</code> で設定する場合は <code>setfmtonsave
+perltidy-in-place</code> とする。 <code>perltidy-in-place</code>
+は自作のシェルスクリプトで、次のようなもの。</p>
+<pre><code>#!/bin/sh
+perltidy -b $1
+rm "$1.bak"
+</code></pre>
+<p>オプションの <code>-b</code>
+は上書き保存だが、バックアップファイルを作ってしまうので、スクリプトの中で削除した。</p>
 <footer>Contact: <a href=
 "mailto:aki@kareha.org">aki@kareha.org</a><br>
 Styled with <a href=
