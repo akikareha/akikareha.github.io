@@ -1,17 +1,17 @@
 # お気に入りのフォーマッタたち
 My Favorite Formatters
 
-テキストで書くプログラミング言語では、どれもソースコードにはある程度の任意性があって、プログラムとしては同じ意味でも、テキストとしては異なるものを書けてしまう。
+テキストで書くプログラミング言語では、どれもソースコードにはある程度の任意性があり、プログラムとしては同じ意味でも、テキストとしては異なるものが書けてしまう。
 そうすると内容自体を比較するのが難しくなってしまう。
-そこでこの任意性、つまり形式(フォーマット)を自動で統一するツール、フォーマッタがあると便利なわけ。
-それでどのプログラミング言語にもフォーマッタが作られている。
+そこでこの任意性、つまり形式(フォーマット)を自動で統一するツール、フォーマッタがあると便利だ。
+そういうわけで、どのプログラミング言語にもフォーマッタが作られている。
 
 ところが、プログラミング言語によっては、公式のフォーマッタが宣言されてないために、複数の異なるフォーマッタが作られている場合がある。
 形式を統一するのが目的のフォーマッタが複数あるのは問題だ。
 とはいえ、それぞれ使い勝手が違って、それぞれ良い面があったりするので、悩ましい。
 そういう場合は、プロジェクト単位でどのフォーマッタを使うか決めることになる。
 
-そこでまあ、私が個人的に使っている、各プログラミング言語のフォーマッタを載せておこうと思う。
+ここでは、私が個人的に使っている、各プログラミング言語のフォーマッタを載せておく。
 
 * Lua: [StyLua](https://github.com/JohnnyMorganz/StyLua)
 * Python: [Black](https://black.readthedocs.io/)
@@ -21,16 +21,18 @@ My Favorite Formatters
 * sh: [shfmt](https://github.com/mvdan/sh)
 * Perl: [Perltidy](https://perltidy.sourceforge.net/)
 
-優先するのは、Debianパッケージにあること。
-また、Node.jsやDenoに依存しないこと。
-なるべく好みの言語で作られていること。
+次の点を考慮して選んでいる。
+
+* Debianパッケージにある。
+* Node.jsやDenoに依存しない。
+* なるべく好きな言語で作られている。
 
 以下でそれぞれについてもう少し詳しく述べる。
 [micro](micro.html)のプラグイン[fmtonsave](https://github.com/akikareha/micro-fmtonsave-plugin/)での設定方法も載せる。
 
 ## Lua
 
-Luaのフォーマッタは[StyLua](https://github.com/JohnnyMorganz/StyLua)がお気に入り。
+Luaのフォーマッタは[StyLua](https://github.com/JohnnyMorganz/StyLua)を選んだ。
 Rustで作られている。
 Debianパッケージには無いが、Rustがあれば `cargo install stylua` でインストールできる。
 
@@ -38,7 +40,7 @@ Debianパッケージには無いが、Rustがあれば `cargo install stylua` �
 
 ## Python
 
-Pythonのフォーマッタは[Black](https://black.readthedocs.io/)がお気に入り。
+Pythonのフォーマッタは[Black](https://black.readthedocs.io/)を選んだ。
 Pythonで作られている。
 Debianパッケージにあり、 `apt-get install black` でインストールできる。
 
@@ -46,26 +48,25 @@ Debianパッケージにあり、 `apt-get install black` でインストール�
 
 ## HTML
 
-HTMLのフォーマッタは[Tidy](https://www.html-tidy.org/)がお気に入り。
+HTMLのフォーマッタは[Tidy](https://www.html-tidy.org/)を選んだ。
 Cで作られている。
 Debianパッケージにあり、 `apt-get install tidy` でインストールできる。
 
 `fmtonsave` で設定する場合は `setfmtonsave tidy -m` とする。
-オプションの `-m` は上書き保存。
+オプションの `-m` は上書き保存だ。
 
 ## JavaScript
 
-JavaScriptのフォーマッタは[js-beautify](https://github.com/beautifier/js-beautify)がお気に入り。
-Pythonで作られていると思っているが、JavaScriptも使われているのだろうか。
-要調査。
+JavaScriptのフォーマッタは[js-beautify](https://github.com/beautifier/js-beautify)を選んだ。
+Pythonで作られている。
 Debianパッケージにあり、 `apt-get install jsbeautifier` でインストールできる。
 
 `fmtonsave` で設定する場合は `setfmtonsave js-beautify-py -r -n -t` とする。
-オプションの `-r` は上書き保存、 `-n` はファイルの最後に改行を付ける、 `-t` はインデントをタブにする。
+オプションの `-r` は上書き保存、 `-n` はファイルの最後に改行を付ける、 `-t` はインデントをタブにするものだ。
 
 ## CSS
 
-CSSのフォーマッタは[CSSTidy](https://csstidy.sourceforge.net/)がお気に入り。
+CSSのフォーマッタは[CSSTidy](https://csstidy.sourceforge.net/)を選んだ。
 C++で作られている。
 Debianパッケージにあり、 `apt-get install csstidy` でインストールできる。
 
@@ -80,16 +81,16 @@ Debianパッケージにあり、 `apt-get install csstidy` でインストー�
 
 ## sh
 
-shのフォーマッタは[shfmt](https://github.com/mvdan/sh)がお気に入り。
+shのフォーマッタは[shfmt](https://github.com/mvdan/sh)を選んだ。
 Goで作られている。
 Debianパッケージにあり、 `apt-get install shfmt` でインストールできる。
 
 `fmtonsave` で設定する場合は `setfmtonsave shfmt -w` とする。
-オプションの `-w` は上書き保存。
+オプションの `-w` は上書き保存だ。
 
 ## Perl
 
-Perlのフォーマッタは[Perltidy](https://perltidy.sourceforge.net/)がお気に入り。
+Perlのフォーマッタは[Perltidy](https://perltidy.sourceforge.net/)を選んだ。
 Perlで作られている。
 Debianパッケージにあり、 `apt-get install perltidy` でインストールできる。
 
@@ -101,3 +102,5 @@ Debianパッケージにあり、 `apt-get install perltidy` でインストー�
 	rm "$1.bak"
 
 オプションの `-b` は上書き保存だが、バックアップファイルを作ってしまうので、スクリプトの中で削除した。
+
+(続く。)

@@ -4,9 +4,12 @@
 <meta name="generator" content=
 "HTML Tidy for HTML5 for Linux version 5.6.0">
 <meta charset="UTF-8">
+<meta name="viewport" content=
+"width=device-width, initial-scale=1">
 <title>私のGitHubページの作り方 - How I Made My GitHub Page | かれは開発室 -
 Kareha Hub</title>
 <link rel="stylesheet" href="simple.css">
+<link rel="stylesheet" href="custom.css">
 <link rel="icon" href="flamingo-favicon.png" type="image/png">
 </head>
 <body>
@@ -15,10 +18,10 @@ Kareha Hub</title>
 <p>How I Made My GitHub Page</p>
 <h2>GitHubページとは？</h2>
 <p><a href="github.html">GitHub</a>はソフトウェアを作る人たちのコミュニティで、<a href=
-"git.html">Git</a>というールを使ってプログラムのソースコードを共有できる仕組みになっている。
+"git.html">Git</a>というツールを使ってプログラムのソースコードを共有できる仕組みになっている。
 Gitは、ソースコードだけでなく、<strong>ファイルなら何でも共有できる</strong>。
 <strong>ウェブサイトのファイルも共有できる</strong>わけだ。</p>
-<p>GitHubでは、Gitを使ってウェブサイトを作る仕組みを提供していて、これが<a href=
+<p>GitHubでは、Gitを使ってウェブサイトを作る仕組みも提供していて、これが<a href=
 "https://pages.github.com/">GitHub Pages</a>🔗と呼ばれる。
 基本的な使い方は次の通り。</p>
 <ol>
@@ -27,21 +30,21 @@ Gitは、ソースコードだけでなく、<strong>ファイルなら何でも
 <li>ウェブページ用のファイルを用意する。</li>
 <li>リポジトリの設定でPagesを有効にする。</li>
 </ol>
-<p>公開URLは <code>https://ユーザー名.github.io/リポジトリ名/</code> になる。
-ただし、リポジトリ名を <code>ユーザー名.github.io</code> にした場合はユーザサイトと呼ばれ、公開URLは特別に
-<code>https://ユーザー名.github.io/</code> になる。</p>
+<p>公開URLは <code>https://ユーザ名.github.io/リポジトリ名/</code> になる。
+ただし、リポジトリ名を <code>ユーザ名.github.io</code> にした場合はユーザサイトと呼ばれ、公開URLは特別に
+<code>https://ユーザ名.github.io/</code> になる。</p>
 <h2>Markdownを使う方法</h2>
 <p>ウェブサイトの内容は、好きなツールを使って静的なHTMLファイルを作れば良い。 私は<a href=
 "markdown.html">Markdown</a>で書いて、コマンドでHTMLに変換することにした。 コマンドは
 <code>markdown</code> で、Debianパッケージにあり、 <code>apt-get install
 markdown</code> でインストールできる。これはPerlで作られている。 <a href=
-"https://daringfireball.net/projects/markdown/">初期のものに忠実な実装</a>🔗らしい。</p>
+"https://daringfireball.net/projects/markdown/">初期のもの</a>🔗に忠実な実装らしい。</p>
 <p>ところが、この <code>markdown</code>
 コマンドは、一度にHTMLに変換できるMarkdownファイルはひとつだけ。 なので、いくつか補助ツールを作る必要があった。</p>
 <p>1つめは、ディレクトリの階層をたどって、すべてのMarkdownファイルをHTMLに変換するもの。
-対応するHTMLファイルよりMarkdownの方が新しい場合だけ変換する。 <code>markdown</code>
+対応するHTMLファイルよりMarkdownの方が新しい場合だけ変換する。 また、<code>markdown</code>
 コマンドはHTMLの本体の部分しか作ってくれず、ヘッダやフッタは付けてくれないので、このスクリプトの中で付ける。
-その後、コードをきれいに整形する<a href="formatters.html">Tidy</a>を掛ける。
+その後、コードをきれいに整形する<a href="formatters.html">Tidy</a>を掛ける。 このスクリプトは
 <code>update.sh</code> と名付けた。</p>
 <pre><code>#!/bin/sh
 find . -name '*.md' | while read -r mdfile; do
@@ -58,13 +61,36 @@ find . -name '*.md' | while read -r mdfile; do
     fi
 done
 </code></pre>
+<p><code>head._html</code> は次の通り。</p>
+<pre><code>&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+&lt;head&gt;
+&lt;meta charset="UTF-8"&gt;
+&lt;title&gt;かれは開発室 - Kareha Hub&lt;/title&gt;
+&lt;link rel="stylesheet" href="simple.css" /&gt;
+&lt;link rel="icon" href="flamingo-favicon.png" type="image/png" /&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;header&gt;
+&lt;a href="/"&gt;かれは開発室 - Kareha Hub&lt;/a&gt;
+&lt;/header&gt;
+</code></pre>
+<p><code>tail._html</code> は次の通り。</p>
+<pre><code>&lt;footer&gt;
+Contact: &lt;a href="mailto:aki@kareha.org"&gt;aki@kareha.org&lt;/a&gt;&lt;br /&gt;
+Styled with &lt;a href="https://simplecss.org/"&gt;Simple.css&lt;/a&gt;🔗
+&lt;/footer&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
 <p>2つめは、対応するHTMLファイルよりMarkdownの方が古くても強制的に変換するもの。
-ヘッダやフッタを更新した際などに必要になる。 <code>force-update.sh</code> と名付けた。</p>
+ヘッダやフッタを更新した際などに必要になる。 このスクリプトは <code>force-update.sh</code>
+と名付けた。</p>
 <pre><code>#!/bin/sh
 find . -name '*.md' -exec touch '{}' \;
 ./update.sh
 </code></pre>
-<p>最後に3つめは、対応するMarkdownがもはや存在しない孤立したHTMLファイルを削除するもの。
+<p>最後に3つめは、対応するMarkdownがもはや存在しない孤立したHTMLファイルを削除するもの。 このスクリプトは
 <code>clean-orphan-html.sh</code> と名付けた。</p>
 <pre><code>#!/bin/sh
 find . -name '*.html' | while read -r htmlfile; do
@@ -79,13 +105,14 @@ find . -name '*.html' | while read -r htmlfile; do
 done
 </code></pre>
 <p>テキストエディタの<a href="micro.html">micro</a>でMarkdownを編集して保存したら、
-<code>Ctrl-b</code> でシェルコマンド <code>./update.sh</code> を実行するという流れ。
-これで私のGitHubページ作りは十分な感じだ。</p>
+<code>Ctrl-b</code> でシェルコマンド <code>./update.sh</code> を実行するという流れだ。
+これで私のGitHubページ作りには、ほぼ十分な感じだ。</p>
 <p>使っている古風な <code>markdown</code> コマンドの整形ルールには注意しないといけない。
 コードブロックがタブかスペース4つでインデントしないといけなかったり、表が描けなかったり、箇条書きのインデントもタブかスペース4つ必要だったりする。</p>
 <h2>スタイルを整える</h2>
 <p>最後になったが、スタイルは<a href="https://simplecss.org/">Simple.css
-Framework</a>🔗のCSSを使うことにした。 良い感じ。</p>
+Framework</a>🔗のCSSを使うことにした。 良い感じだ。</p>
+<p>(続く。)</p>
 <footer>Contact: <a href=
 "mailto:aki@kareha.org">aki@kareha.org</a><br>
 Styled with <a href=

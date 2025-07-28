@@ -14,6 +14,8 @@ On this site, I introduce the software I develop and the ideas I’ve expressed 
 
 * [microのプラグインたち](https://github.com/akikareha/micro-unofficial-plugin-channel/)  
   micro Plugins
+* [microのスクリーンショットたち](https://akikareha.github.io/micro-screenshots/)  
+  micro Screenshots
 * [GNU Typistのレッスンたち](https://github.com/akikareha/gtypist-programming-lessons/)  
   GNU Typist Lessons
 * [タイピング練習器typtut](https://github.com/akikareha/typtut/) [[デモ](https://akikareha.github.io/typtut/)]  
@@ -33,13 +35,19 @@ On this site, I introduce the software I develop and the ideas I’ve expressed 
   My Favorite Formatters
 * [私のGitHubページの作り方](github-pages.html)  
   How I Made My GitHub Page
+* [microのプラグインを作ってる人を探してみる](find-micro-plugin-developers.html)  
+  Trying to Find micro Plugin Developers
 
 ## 舞台裏 - Backstage
+
+![小屋 - Cottage](cottage.png)
 
 * [下書きたち](drafts.html) - Drafts
 * [雑記](note.html) - Note
 
 ## 姉妹サイトたち - Sister Sites
+
+![インコのペア - Inko Pairs](inkopair.png)
 
 かれは開発室は、[かれは研究室](https://kareha.org/)の別室です。  
 Kareha Hub is an annex to [Kareha Lab](https://kareha.org/).

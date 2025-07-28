@@ -33,3 +33,8 @@ It's fully visible, yet something like a backstage.
 * [gimp](gimp.html)
 * [languages](languages.html)
 * [softwares](softwares.html)
+* [shell](shell.html)
+
+## テスト
+
+* [hello](hello.html)

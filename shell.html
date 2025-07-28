@@ -6,22 +6,23 @@
 <meta charset="UTF-8">
 <meta name="viewport" content=
 "width=device-width, initial-scale=1">
-<title>GIMP | かれは開発室 - Kareha Hub</title>
+<title>shell | かれは開発室 - Kareha Hub</title>
 <link rel="stylesheet" href="simple.css">
 <link rel="stylesheet" href="custom.css">
 <link rel="icon" href="flamingo-favicon.png" type="image/png">
 </head>
 <body>
 <header><a href="/">かれは開発室 - Kareha Hub</a></header>
-<h1>GIMP</h1>
-<h2>角を丸める</h2>
-<ol>
-<li>もしまだアルファチャンネルが無かったら、 レイヤー → 透明部分 → アルファチャンネルの追加 で追加する。</li>
-<li>すべてを選択</li>
-<li>選択 → 角を丸める</li>
-<li>選択 → 選択範囲を反転</li>
-<li>Deleteキーを押す</li>
-</ol>
+<h1>shell</h1>
+<h2>16進数を扱う</h2>
+<p>10進数を16進数にする。</p>
+<pre><code>$ printf "%x\n" 255
+ff
+</code></pre>
+<p>16進数を10進数にする。</p>
+<pre><code>$ printf "%d\n" 0xff
+255
+</code></pre>
 <footer>Contact: <a href=
 "mailto:aki@kareha.org">aki@kareha.org</a><br>
 Styled with <a href=

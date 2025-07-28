@@ -4,8 +4,11 @@
 <meta name="generator" content=
 "HTML Tidy for HTML5 for Linux version 5.6.0">
 <meta charset="UTF-8">
+<meta name="viewport" content=
+"width=device-width, initial-scale=1">
 <title>雑記 - Note | かれは開発室 - Kareha Hub</title>
 <link rel="stylesheet" href="simple.css">
+<link rel="stylesheet" href="custom.css">
 <link rel="icon" href="flamingo-favicon.png" type="image/png">
 </head>
 <body>
@@ -56,7 +59,8 @@
 逆に、見出しに英語訳を付けると、ブラウザの翻訳機能の妨げになったりするかもしれない。
 なかなか面倒な世界だが、いつかしっかり確認しておきたい。</p>
 <h3>口調</h3>
-<p>口調を統一した方が良いだろうか。 どんな口調が良いのだろう。</p>
+<p>口調を統一した方が良いだろうか。 どんな口調が良いのだろう。
+とりあえず、トップページはですます調で書き、見出しは砕けた表現にして、本文は断定調で書くことにする。</p>
 <h2>markdown</h2>
 <h3>モダンなコマンドに置き換えられるかも</h3>
 <p>サイトを生成するのに使っている <code>markdown</code>
@@ -105,6 +109,39 @@ CSSでもできるらしいが、別のCSSを追加する方法で少し試し�
 ひとつのHTMLファイルに複数のCSSファイルを読み込ませることができるので、 <code>custom.css</code>
 を後から追加して部分的に上書きできるはず。
 余裕があったら調整したいとも思うが、デザイン沼にはまりたくないので我慢した方が良いもしれないとも思う。</p>
+<h2>micro</h2>
+<h3>スクリーンショット集</h3>
+<p>組み込みの各カラースキームのスクリーンショットの一覧を作ると世の中の役に立つかもしれない。 高々25個。 されど25個。
+思い付いたからには、やらないといけないのか。 <code>micro-screenshots</code>
+などとして、野良カラースキームも含めてスクリーンショットを載せると、結構良いかもしれない。
+作りはこのサイトと同じような感じで大丈夫だろう。</p>
+<p>といったわけで、作ってしまった。</p>
+<h2>microのカラースキームを変更するプラグインたち</h2>
+<h3>Linuxでしかテストしてない</h3>
+<p>microのカラースキームを変更するプラグインとして <code>autotheme</code>,
+<code>colorshuffle</code> それに <code>colorswitcher</code> を作ってある。
+このうち <code>colorshuffle</code> と <code>colorswitcher</code>
+では、ユーザがインストールしたカラースキームをmicroの設定ディレクトリから探すために、外部コマンドの
+<code>ls</code> または <code>dir</code> を使っている。 LinuxやBSDそれにMacOSでは
+<code>ls</code> が使えるが、Windowsでは使えない。 代わりに <code>dir</code>
+を使うことになる。 でもLinuxでしかテストしてない。 Windowsに触るのは趣味の範囲を越えてしまう。</p>
+<h2>microのオプションをトグルするプラグイン</h2>
+<p>microのオプションをトグルするコマンドがmicro本家のイシュに投稿されてた。 今はそれを
+<code>init.lua</code> に書いて使ってるけど、独立したプラグインに整えたい。 完全にパクリになるが。</p>
+<p>といったわけで、作ってしまった。</p>
+<h2>microプラグインのGoとLuaのミスマッチ</h2>
+<ul>
+<li>Goのインデックスは0ベースだが、Luaのインデックスは1ベースだ。</li>
+<li>Goの文字列は文字単位での操作が楽だが、Luaの文字列では楽ではない。</li>
+</ul>
+<p>プラグインの言語にLuaを選んだのは、ある意味、苦肉の策と言える。</p>
+<h2>サイトの加筆や修正</h2>
+<p><a href="github-pages.html">GitHubページ</a>のページに加筆しないと。</p>
+<ul>
+<li>タイトルを自動で付ける。</li>
+<li>外部サイトへのリンクを区別する。</li>
+<li>hrタグが見えるようにする。</li>
+</ul>
 <footer>Contact: <a href=
 "mailto:aki@kareha.org">aki@kareha.org</a><br>
 Styled with <a href=

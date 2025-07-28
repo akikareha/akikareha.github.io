@@ -3,11 +3,11 @@ How I Made My GitHub Page
 
 ## GitHubページとは？
 
-[GitHub](github.html)はソフトウェアを作る人たちのコミュニティで、[Git](git.html)というールを使ってプログラムのソースコードを共有できる仕組みになっている。
+[GitHub](github.html)はソフトウェアを作る人たちのコミュニティで、[Git](git.html)というツールを使ってプログラムのソースコードを共有できる仕組みになっている。
 Gitは、ソースコードだけでなく、**ファイルなら何でも共有できる**。
 **ウェブサイトのファイルも共有できる**わけだ。
 
-GitHubでは、Gitを使ってウェブサイトを作る仕組みを提供していて、これが[GitHub Pages](https://pages.github.com/)と呼ばれる。
+GitHubでは、Gitを使ってウェブサイトを作る仕組みも提供していて、これが[GitHub Pages](https://pages.github.com/)と呼ばれる。
 基本的な使い方は次の通り。
 
 1. GitHubアカウントを作成する。
@@ -15,24 +15,24 @@ GitHubでは、Gitを使ってウェブサイトを作る仕組みを提供し�
 3. ウェブページ用のファイルを用意する。
 4. リポジトリの設定でPagesを有効にする。
 
-公開URLは `https://ユーザー名.github.io/リポジトリ名/` になる。
-ただし、リポジトリ名を `ユーザー名.github.io` にした場合はユーザサイトと呼ばれ、公開URLは特別に `https://ユーザー名.github.io/` になる。
+公開URLは `https://ユーザ名.github.io/リポジトリ名/` になる。
+ただし、リポジトリ名を `ユーザ名.github.io` にした場合はユーザサイトと呼ばれ、公開URLは特別に `https://ユーザ名.github.io/` になる。
 
 ## Markdownを使う方法
 
 ウェブサイトの内容は、好きなツールを使って静的なHTMLファイルを作れば良い。
 私は[Markdown](markdown.html)で書いて、コマンドでHTMLに変換することにした。
 コマンドは `markdown` で、Debianパッケージにあり、 `apt-get install markdown` でインストールできる。これはPerlで作られている。
-[初期のものに忠実な実装](https://daringfireball.net/projects/markdown/)らしい。
+[初期のもの](https://daringfireball.net/projects/markdown/)に忠実な実装らしい。
 
 ところが、この `markdown` コマンドは、一度にHTMLに変換できるMarkdownファイルはひとつだけ。
 なので、いくつか補助ツールを作る必要があった。
 
 1つめは、ディレクトリの階層をたどって、すべてのMarkdownファイルをHTMLに変換するもの。
 対応するHTMLファイルよりMarkdownの方が新しい場合だけ変換する。
-`markdown` コマンドはHTMLの本体の部分しか作ってくれず、ヘッダやフッタは付けてくれないので、このスクリプトの中で付ける。
+また、`markdown` コマンドはHTMLの本体の部分しか作ってくれず、ヘッダやフッタは付けてくれないので、このスクリプトの中で付ける。
 その後、コードをきれいに整形する[Tidy](formatters.html)を掛ける。
-`update.sh` と名付けた。
+このスクリプトは `update.sh` と名付けた。
 
 	#!/bin/sh
 	find . -name '*.md' | while read -r mdfile; do
@@ -49,16 +49,40 @@ GitHubでは、Gitを使ってウェブサイトを作る仕組みを提供し�
 		fi
 	done
 
+`head._html` は次の通り。
+
+	<!DOCTYPE html>
+	<html lang="en">
+	<head>
+	<meta charset="UTF-8">
+	<title>かれは開発室 - Kareha Hub</title>
+	<link rel="stylesheet" href="simple.css" />
+	<link rel="icon" href="flamingo-favicon.png" type="image/png" />
+	</head>
+	<body>
+	<header>
+	<a href="/">かれは開発室 - Kareha Hub</a>
+	</header>
+
+`tail._html` は次の通り。
+
+	<footer>
+	Contact: <a href="mailto:aki@kareha.org">aki@kareha.org</a><br />
+	Styled with <a href="https://simplecss.org/">Simple.css</a>🔗
+	</footer>
+	</body>
+	</html>
+
 2つめは、対応するHTMLファイルよりMarkdownの方が古くても強制的に変換するもの。
 ヘッダやフッタを更新した際などに必要になる。
-`force-update.sh` と名付けた。
+このスクリプトは `force-update.sh` と名付けた。
 
 	#!/bin/sh
 	find . -name '*.md' -exec touch '{}' \;
 	./update.sh
 
 最後に3つめは、対応するMarkdownがもはや存在しない孤立したHTMLファイルを削除するもの。
-`clean-orphan-html.sh` と名付けた。
+このスクリプトは `clean-orphan-html.sh` と名付けた。
 
 	#!/bin/sh
 	find . -name '*.html' | while read -r htmlfile; do
@@ -72,8 +96,8 @@ GitHubでは、Gitを使ってウェブサイトを作る仕組みを提供し�
 		fi
 	done
 
-テキストエディタの[micro](micro.html)でMarkdownを編集して保存したら、 `Ctrl-b` でシェルコマンド `./update.sh` を実行するという流れ。
-これで私のGitHubページ作りは十分な感じだ。
+テキストエディタの[micro](micro.html)でMarkdownを編集して保存したら、 `Ctrl-b` でシェルコマンド `./update.sh` を実行するという流れだ。
+これで私のGitHubページ作りには、ほぼ十分な感じだ。
 
 使っている古風な `markdown` コマンドの整形ルールには注意しないといけない。
 コードブロックがタブかスペース4つでインデントしないといけなかったり、表が描けなかったり、箇条書きのインデントもタブかスペース4つ必要だったりする。
@@ -81,4 +105,6 @@ GitHubでは、Gitを使ってウェブサイトを作る仕組みを提供し�
 ## スタイルを整える
 
 最後になったが、スタイルは[Simple.css Framework](https://simplecss.org/)のCSSを使うことにした。
-良い感じ。
+良い感じだ。
+
+(続く。)
