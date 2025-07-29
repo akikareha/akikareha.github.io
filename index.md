@@ -12,10 +12,12 @@ On this site, I introduce the software I develop and the ideas I’ve expressed 
 
 ![キーボード - Keyboard](keyboard.png)
 
-* [microのプラグインたち](https://github.com/akikareha/micro-unofficial-plugin-channel/)  
-  micro Plugins
+* [私が作ったmicroのプラグインたち](https://github.com/akikareha/micro-unofficial-plugin-channel/)  
+  micro Plugins I developed
 * [microのスクリーンショットたち](https://akikareha.github.io/micro-screenshots/)  
   micro Screenshots
+* [世間のmicroのプラグインのリスト](https://akikareha.github.io/micro-plugin-list/)  
+  Public micro Plugin List
 * [GNU Typistのレッスンたち](https://github.com/akikareha/gtypist-programming-lessons/)  
   GNU Typist Lessons
 * [タイピング練習器typtut](https://github.com/akikareha/typtut/) [[デモ](https://akikareha.github.io/typtut/)]  

@@ -22,8 +22,7 @@ Kareha Hub</title>
 Gitは、ソースコードだけでなく、<strong>ファイルなら何でも共有できる</strong>。
 <strong>ウェブサイトのファイルも共有できる</strong>わけだ。</p>
 <p>GitHubでは、Gitを使ってウェブサイトを作る仕組みも提供していて、これが<a href=
-"https://pages.github.com/">GitHub Pages</a>🔗と呼ばれる。
-基本的な使い方は次の通り。</p>
+"https://pages.github.com/">GitHubページ</a>🔗と呼ばれる。 基本的な使い方は次の通り。</p>
 <ol>
 <li>GitHubアカウントを作成する。</li>
 <li>リポジトリを作成する。</li>
@@ -33,6 +32,8 @@ Gitは、ソースコードだけでなく、<strong>ファイルなら何でも
 <p>公開URLは <code>https://ユーザ名.github.io/リポジトリ名/</code> になる。
 ただし、リポジトリ名を <code>ユーザ名.github.io</code> にした場合はユーザサイトと呼ばれ、公開URLは特別に
 <code>https://ユーザ名.github.io/</code> になる。</p>
+<p>GitHub自体が基本的に無料で使えるし、GitHubページも無料で使えるので、貧乏人には優しく、居心地が良い。
+オーナーがMicrosoftであることを除けば…いや、もはや言うまい。</p>
 <h2>Markdownを使う方法</h2>
 <p>ウェブサイトの内容は、好きなツールを使って静的なHTMLファイルを作れば良い。 私は<a href=
 "markdown.html">Markdown</a>で書いて、コマンドでHTMLに変換することにした。 コマンドは
@@ -110,8 +111,115 @@ done
 <p>使っている古風な <code>markdown</code> コマンドの整形ルールには注意しないといけない。
 コードブロックがタブかスペース4つでインデントしないといけなかったり、表が描けなかったり、箇条書きのインデントもタブかスペース4つ必要だったりする。</p>
 <h2>スタイルを整える</h2>
-<p>最後になったが、スタイルは<a href="https://simplecss.org/">Simple.css
+<p>スタイルは<a href="https://simplecss.org/">Simple.css
 Framework</a>🔗のCSSを使うことにした。 良い感じだ。</p>
+<h2>さらに改善する</h2>
+<p>以上で基本的には十分だが、使っているうちにいくつか不満が出てきたので、次の点について修正してある。</p>
+<ul>
+<li>タイトルを自動で付ける。</li>
+<li>外部サイトへのリンクを区別する。</li>
+<li>hrタグが見えるようにする。</li>
+<li>モバイルに対応する。</li>
+</ul>
+<p>以下に改訂版スクリプトなどを載せる。</p>
+<h3>custom.css を追加した</h3>
+<p><code>simple.css</code> を上書き修正するCSSファイル <code>custom.css</code>
+を追加した。 <code>hr</code> タグが見えない問題を修正した。</p>
+<pre><code>hr {
+    width: 100%;
+    height: 1px;
+}
+</code></pre>
+<h3>extract_title.pl を追加した</h3>
+<p>Markdownファイルからページのタイトルを取り出すスクリプト <code>extract_title.pl</code>
+を追加した。 一番大きい見出しと、その次の行を使って、タイトルを作る。</p>
+<pre><code>#!/usr/bin/perl
+use strict;
+use warnings;
+
+my $file = shift or die "Usage: $0 &lt;markdown_file&gt;\n";
+
+open my $fh, '&lt;', $file or die "Cannot open file '$file': $!\n";
+
+my $line1 = &lt;$fh&gt;;
+my $line2 = &lt;$fh&gt;;
+close $fh;
+
+unless ( defined $line1 ) {
+    print "(blank)";
+    exit;
+}
+
+chomp($line1);
+chomp($line2) if defined $line2;
+
+$line1 =~ s/^#+\s*//;
+
+my $title;
+if ( $line1 =~ / - / ) {
+    $title = $line1;
+}
+elsif ( defined $line2 &amp;& $line2 ne "" ) {
+    $title = "$line1 - $line2";
+}
+else {
+    $title = $line1;
+}
+
+my $site_title = "かれは開発室 - Kareha Hub";
+
+if ($title eq $site_title) {
+    print $title;
+} else {
+    print "$title | $site_title";
+}
+</code></pre>
+<h3>head._html を改訂した</h3>
+<p>HTMLのヘッダ <code>head._html</code> を改訂した。</p>
+<p>修正点の1つめは、タイトルを動的に埋め込むために、テンプレート <code>{{title}}</code>
+に置き換えた。</p>
+<p>2つめは、 <code>simple.css</code> で見えない <code>hr</code>
+タグを見えるようにするため、追加で <code>custom.css</code> を読み込むようにした。</p>
+<p>3つめは、モバイルでの見栄えを良くするために、 <code>viewport</code> の
+<code>meta</code> タグを追加した。</p>
+<pre><code>&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+&lt;head&gt;
+&lt;meta charset="UTF-8" /&gt;
+&lt;meta name="viewport" content="width=device-width, initial-scale=1" /&gt;
+&lt;title&gt;{{title}}&lt;/title&gt;
+&lt;link rel="stylesheet" href="simple.css" /&gt;
+&lt;link rel="stylesheet" href="custom.css" /&gt;
+&lt;link rel="icon" href="flamingo-favicon.png" type="image/png" /&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;header&gt;
+&lt;a href="/"&gt;かれは開発室 - Kareha Hub&lt;/a&gt;
+&lt;/header&gt;
+</code></pre>
+<h3>update.sh を改訂した</h3>
+<p>変換のメインのスクリプト <code>update.sh</code> を改訂した。</p>
+<p>修正点の1つめは、HTMLのヘッダ <code>head._html</code> のタイトルのテンプレート
+<code>{{title}}</code> を、 <code>extract_title.pl</code>
+で動的に生成したタイトルで置き換えるようにした。</p>
+<p>2つめは、Markdownの段階で、外部サイトへのリンクの直後に絵文字のリンク🔗を追加するようにした。</p>
+<pre><code>#!/bin/sh
+find . -name '*.md' | while read -r mdfile; do
+    dir=$(dirname "$mdfile")
+    base=$(basename "$mdfile" .md)
+    htmlfile="$dir/$base.html"
+
+    if [ ! -f "$htmlfile" ] || [ "$mdfile" -nt "$htmlfile" ]; then
+        echo "Converting: $mdfile -&gt; $htmlfile"
+        title=$(./extract_title.pl "$mdfile")
+        escaped_title=$(echo $title | sed -e 's/\\/\\\\/g' -e 's/\//\\\//g' -e 's/&amp;/\\\&amp;/g')
+        sed "s/{{title}}/$escaped_title/" head._html &gt;"$htmlfile"
+        cat "$mdfile" | sed -E 's/(\[[^][]+\])\((https?:\/\/[^)]+)\)/\1(\2)🔗/g' | markdown &gt;&gt;"$htmlfile"
+        cat tail._html &gt;&gt;"$htmlfile"
+        tidy -mq "$htmlfile" 2&gt;/dev/null
+    fi
+done
+</code></pre>
 <p>(続く。)</p>
 <footer>Contact: <a href=
 "mailto:aki@kareha.org">aki@kareha.org</a><br>
